@@ -45,17 +45,18 @@ public class ParkingSpotManager {
     private int getNextSpotId(){
         return parkingSpotCounter.incrementAndGet();
     }
+
     ParkingSpot createNewSpotOfType(Class<? extends ParkingSpot> spotType){
         int spotId = getNextSpotId();
         ParkingSpot newSpot = null;
         if(spotType == Motorcycle.class)
-            newSpot =  new Motorcycle(spotId);
+            newSpot =  new Motorcycle(spotId, "M" + spotId);
         else if(spotType == Compact.class)
-            newSpot =  new Compact(spotId);
+            newSpot =  new Compact(spotId, "C" + spotId);
         else if(spotType == Handicapped.class)
-            newSpot = new Handicapped(spotId);
+            newSpot = new Handicapped(spotId, "H" + spotId);
         else if(spotType == Large.class)
-            newSpot = new Large(spotId);
+            newSpot = new Large(spotId, "L" + spotId);
         else{
             throw new IllegalArgumentException("Unknown spot type");
         }

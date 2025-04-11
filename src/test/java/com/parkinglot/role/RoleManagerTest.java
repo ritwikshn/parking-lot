@@ -45,7 +45,7 @@ public class RoleManagerTest {
         RoleManager rm = RoleManager.getInstance();
         rm.assignRoleToUser(testGuest, TestRole.GUEST, TestRole.GUEST_ROLE_PASSKEY);
 
-        assertEquals(TestRole.GUEST, rm.getUserRole(testGuest));
+        assertEquals(TestRole.GUEST, rm.getUserRole(testGuest).get());
     }
 
     @Test

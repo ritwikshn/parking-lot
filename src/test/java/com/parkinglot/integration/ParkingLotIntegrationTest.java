@@ -35,15 +35,14 @@ public class ParkingLotIntegrationTest {
     @Test
     public void testEntireVehicleParkingFlow(){
         ParkingLot parkingLot = ParkingLot.getInstance();
-        Vehicle car = VehicleFactory.createVehicle(Car.class, "CAR123");
+        Vehicle car = VehicleFactory.createVehicle(VehicleFactory.VEHICLE_TYPE_CAR, "CAR123");
         Entrance entryGate = parkingLot.spawnNewEntrance();
         Exit exitGate = parkingLot.spawnNewExit();
 
-        Optional<ParkingTicket> optTicket = entryGate.getParkingTicket(car);
+        Optional<ParkingTicket> optTicket = entryGate.assignAndGetParkingTicket(car);
         if(optTicket.isEmpty()) throw new IllegalStateException("Parking Lot is full which is not expected");
         ParkingTicket ticket = optTicket.get();
 
-        car.assignTicket(ticket);
         car.park();
 
         double parkingFee = exitGate.presentTicketAndGetFee(ticket);
@@ -64,15 +63,14 @@ public class ParkingLotIntegrationTest {
     @Test
     public void testAssignedSpotReleasedAtExit(){
         ParkingLot parkingLot = ParkingLot.getInstance();
-        Vehicle car = VehicleFactory.createVehicle(Car.class, "CAR123");
+        Vehicle car = VehicleFactory.createVehicle(VehicleFactory.VEHICLE_TYPE_CAR, "CAR123");
         Entrance entryGate = parkingLot.spawnNewEntrance();
         Exit exitGate = parkingLot.spawnNewExit();
 
-        Optional<ParkingTicket> optTicket = entryGate.getParkingTicket(car);
+        Optional<ParkingTicket> optTicket = entryGate.assignAndGetParkingTicket(car);
         if(optTicket.isEmpty()) throw new IllegalStateException("Parking Lot is full which is not expected");
         ParkingTicket ticket = optTicket.get();
 
-        car.assignTicket(ticket);
         car.park();
 
         ParkingSpot assignedSpot = ticket.getAssignedSpot();

@@ -2,12 +2,13 @@ package com.parkinglot.parkingspot;
 
 public abstract class ParkingSpot {
     private int id;
+    private String name;
     private ParkingSpotStatus status = ParkingSpotStatus.VACANT;
     public boolean isVacant(){
         return ParkingSpotStatus.VACANT == status;
     }
-    ParkingSpot(){ }
-    ParkingSpot(int id){
+
+    ParkingSpot(int id, String name){
         this.id = id;
     }
     final synchronized void occupySpot(){
@@ -16,6 +17,7 @@ public abstract class ParkingSpot {
         }
         status = ParkingSpotStatus.OCCUPIED;
     }
+
     void vacateSpot(){
         this.status.accept(new ParkingSpotStatus.ParkingSpotStatusVisitor<Void>() {
             @Override
@@ -36,6 +38,10 @@ public abstract class ParkingSpot {
                 throw new IllegalStateException("Spot is unavailable");
             }
         });
+    }
+
+    public String getName(){
+        return name;
     }
 }
 

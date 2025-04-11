@@ -4,19 +4,19 @@ import java.util.HashMap;
 import java.util.function.Supplier;
 
 public class VehicleFactory {
-    public static final String VEHICLE_TYPE_CAR = "car";
-    public static final String VEHICLE_TYPE_VAN = "van";
-    public static final String VEHICLE_TYPE_MOTORCYCLE = "motorcycle";
-    public static final String VEHICLE_TYPE_TRUCK = "truck";
+    public static final String VEHICLE_TYPE_CAR = Car.VEHICLE_TYPE;
+    public static final String VEHICLE_TYPE_VAN = Van.VEHICLE_TYPE;
+    public static final String VEHICLE_TYPE_MOTORCYCLE = MotorCycle.VEHICLE_TYPE;
+    public static final String VEHICLE_TYPE_TRUCK = Truck.VEHICLE_TYPE;
 
-    static HashMap<Class<? extends Vehicle>, Supplier<Vehicle>> vehicleTypeRegistry = new HashMap<>();
+    static HashMap<String, Supplier<Vehicle>> vehicleTypeRegistry = new HashMap<>();
     static{
-        registerVehicle(MotorCycle.class, MotorCycle::new);
-        registerVehicle(Car.class, Car::new);
-        registerVehicle(Van.class, Van::new);
-        registerVehicle(Truck.class, Truck::new);
+        registerVehicle(VEHICLE_TYPE_MOTORCYCLE, MotorCycle::new);
+        registerVehicle(VEHICLE_TYPE_CAR, Car::new);
+        registerVehicle(VEHICLE_TYPE_VAN, Van::new);
+        registerVehicle(VEHICLE_TYPE_TRUCK, Truck::new);
     }
-    public static void registerVehicle(Class<? extends Vehicle> vehicleType, Supplier<Vehicle> constructor){
+    public static void registerVehicle(String vehicleType, Supplier<Vehicle> constructor){
         if(vehicleType == null){
             throw new IllegalArgumentException("Vehicle type cannot be null");
         }
@@ -25,7 +25,8 @@ public class VehicleFactory {
         }
         vehicleTypeRegistry.put(vehicleType, constructor);
     }
-    public static Vehicle createVehicle(Class<? extends Vehicle> vehicleType, String licenseNumber){
+
+    public static Vehicle createVehicle(String vehicleType, String vehicleLicenseNumber){
         if(vehicleType == null){
             throw new IllegalArgumentException("Vehicle type cannot be null");
         }
@@ -35,7 +36,7 @@ public class VehicleFactory {
             throw new IllegalArgumentException("Unsupported vehicle type");
         }
         Vehicle newVehicle  = constructor.get();
-        newVehicle.setLicenseNumber(licenseNumber);
+        newVehicle.setLicenseNumber(vehicleLicenseNumber);
         return newVehicle;
     }
 }

@@ -4,6 +4,12 @@ import com.parkinglot.vehicle.Vehicle;
 import com.parkinglot.ParkingTicket;
 public class Car extends Vehicle {
 
+    public final static String VEHICLE_TYPE = "car";
+
+    public Car(){
+        super(VEHICLE_TYPE);
+    }
+
     @Override
     public void park() {
         super.park();

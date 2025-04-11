@@ -37,6 +37,8 @@ public class ParkingLot {
         this.name = name;
         this.address = address;
         this.parkingRate = parkingRate;
+        spawnNewEntrance();
+        spawnNewExit();
     }
 
     public String getName(){
@@ -114,10 +116,14 @@ public class ParkingLot {
         if(exit != null) exitGatesQueue.offer(exit);
         return exit;
     }
-    public Entrance getARegisteredEntrance(){
-        if(entranceList.size() == 0) return null;
+    void unregisterAllExitsAndEntrances(){
+        entranceList.clear();
+        exitGatesQueue.clear();
+    }
+    public Optional<Entrance> getARegisteredEntrance(){
+        if(entranceList.size() == 0) return Optional.empty();
         Entrance entryGate =  entranceList.get((int) (entranceList.size()*Math.random()));
-        return entryGate;
+        return Optional.of(entryGate);
     }
     public DisplayBoard spawnNewDisplayBoard(){
         DisplayBoard newBoard = new DisplayBoard((int) (1000*Math.random()));

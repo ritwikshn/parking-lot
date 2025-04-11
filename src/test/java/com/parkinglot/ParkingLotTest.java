@@ -131,6 +131,7 @@ public class ParkingLotTest {
     @Test
     public void testSpawnAndFetchNewExit(){
         ParkingLot parkingLot = ParkingLot.getInstance();
+        parkingLot.unregisterAllExitsAndEntrances();
         Exit exit = parkingLot.spawnNewExit();
         assertNotNull(exit);
         //since this is the only registered exit at this moment
@@ -139,23 +140,13 @@ public class ParkingLotTest {
     @Test
     public void testSpawnAndFetchNewEntrance(){
         ParkingLot parkingLot = ParkingLot.getInstance();
+        parkingLot.unregisterAllExitsAndEntrances();
         Entrance entry= parkingLot.spawnNewEntrance();
         assertNotNull(entry);
         //since this is the only registered entrance at this moment
-        assertEquals(entry, parkingLot.getARegisteredEntrance());
+        assertEquals(entry, parkingLot.getARegisteredEntrance().get());
     }
-    @Test
-    public void testRegisteredExitFetchWhenNoneRegistered(){
-        ParkingLot parkingLot = ParkingLot.getInstance();
-        //no exit is registered by default
-        assertNull(parkingLot.getARegisteredExit());
-    }
-    @Test
-    public void testRegisteredEntranceFetchWhenNoneRegistered(){
-        ParkingLot parkingLot = ParkingLot.getInstance();
-        //no entrance is registered by default
-        assertNull(parkingLot.getARegisteredEntrance());
-    }
+
     @Test
     public void testSpawnAndFetchNewDisplayBoard(){
         ParkingLot parkingLot = ParkingLot.getInstance();

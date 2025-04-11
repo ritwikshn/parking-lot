@@ -155,7 +155,7 @@ public class SpotManagerTest {
     public void testInvalidReleaseSpot1(){
         ParkingSpotManager spotManager = ParkingSpotManager.getInstance();
         //a spot not created via spot manager
-        ParkingSpot unregisteredSpot = new Large(1);
+        ParkingSpot unregisteredSpot = new Large(1, "L" + 1);
         assertNotNull(unregisteredSpot);
         assertThrows(IllegalStateException.class, () -> spotManager.releaseSpot(unregisteredSpot));
     }

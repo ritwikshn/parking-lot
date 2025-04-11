@@ -3,11 +3,14 @@ package com.parkinglot.vehicle;
 import com.parkinglot.ParkingTicket;
 
 public abstract class Vehicle {
+    private static final String DEFAULT_LICENSE_NUMBER = "RJ01CB8292";
     private String licenseNumber;
-    private ParkingTicket parkingTicket;
     private String vehicleType;
+    private ParkingTicket parkingTicket;
 
-    Vehicle(){}
+    Vehicle(String vehicleType){
+        this.vehicleType = vehicleType;
+    }
     public final void assignTicket(ParkingTicket parkingTicket){
         this.parkingTicket = parkingTicket;
     }
@@ -22,5 +25,8 @@ public abstract class Vehicle {
     }
     public ParkingTicket showParkingTicket(){
         return this.parkingTicket;
+    }
+    public String getVehicleType(){
+        return vehicleType;
     }
 }
