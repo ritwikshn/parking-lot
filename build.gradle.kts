@@ -23,6 +23,7 @@ dependencies {
     implementation("org.junit.jupiter:junit-jupiter:5.8.1")
     implementation("org.junit.jupiter:junit-jupiter:5.8.1")
     implementation("org.springframework.boot:spring-boot-starter-web")
+    implementation("org.springframework.boot:spring-boot-starter-validation")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
     testImplementation(platform("org.junit:junit-bom:5.9.1"))

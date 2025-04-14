@@ -1,6 +1,6 @@
 package com.parkinglot.payment;
 
-import com.parkinglot.exceptions.PermanentPaymentException;
+import com.parkinglot.exception.PermanentPaymentException;
 
 import java.time.ZonedDateTime;
 

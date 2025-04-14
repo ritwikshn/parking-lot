@@ -105,3 +105,7 @@ Icon
 Network Trash Folder
 Temporary Items
 .apdisk
+
+
+#Project specific custom files
+src/main/java/com/parkinglot/controller/MockAppController.java

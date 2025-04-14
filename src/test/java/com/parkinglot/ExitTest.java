@@ -1,8 +1,7 @@
 package com.parkinglot;
 
-import com.parkinglot.account.Account;
-import com.parkinglot.exceptions.AmountMismatchException;
-import com.parkinglot.exceptions.PermanentPaymentException;
+import com.parkinglot.exception.AmountMismatchException;
+import com.parkinglot.exception.PermanentPaymentException;
 import com.parkinglot.parkingrate.FlatParkingRate;
 import com.parkinglot.parkingrate.ParkingRate;
 import com.parkinglot.payment.CardPayment;

@@ -3,7 +3,7 @@ package com.parkinglot.rest;
 import java.time.ZonedDateTime;
 import com.parkinglot.ParkingTicket;
 
-public class ParkingTicketResponse {
+public class ParkingTicketResponseDTO {
 
     private int ticketNumber;
     private ZonedDateTime entryTimestamp;
@@ -13,7 +13,7 @@ public class ParkingTicketResponse {
     private String parkingSpotName;
 
 
-    public ParkingTicketResponse(ParkingTicket ticket){
+    public ParkingTicketResponseDTO(ParkingTicket ticket){
         this.ticketNumber = ticket.getTicketNumber();
         this.entryTimestamp = ticket.getEntryTimestamp();
         this.exitTimeStamp = ticket.getExitTimeStamp();

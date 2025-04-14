@@ -1,6 +1,6 @@
 package com.parkinglot.payment;
 
-import com.parkinglot.exceptions.PermanentPaymentException;
+import com.parkinglot.exception.PermanentPaymentException;
 
 public class CardPayment extends Payment {
     private final static int MAX_RETRIES = 3;

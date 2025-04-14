@@ -4,7 +4,7 @@ import com.parkinglot.Entrance;
 import com.parkinglot.Exit;
 import com.parkinglot.ParkingLot;
 import com.parkinglot.ParkingTicket;
-import com.parkinglot.exceptions.PermanentPaymentException;
+import com.parkinglot.exception.PermanentPaymentException;
 import com.parkinglot.parkingspot.ParkingSpotManager;
 import com.parkinglot.payment.CardPayment;
 import com.parkinglot.payment.Payment;
@@ -12,7 +12,6 @@ import com.parkinglot.vehicle.VehicleFactory;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import com.parkinglot.vehicle.Vehicle;
-import com.parkinglot.vehicle.Car;
 import com.parkinglot.parkingspot.ParkingSpot;
 
 import java.lang.reflect.Field;

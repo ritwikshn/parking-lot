@@ -1,4 +1,4 @@
-package com.parkinglot.exceptions;
+package com.parkinglot.exception;
 
 public class PermanentPaymentException extends Exception{
     public PermanentPaymentException(String s){
